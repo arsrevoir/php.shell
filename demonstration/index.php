@@ -35,6 +35,8 @@
 
         $file = new FileHandler($_FILES['file'], 'images/', $ext);
 
-       $file->moveFile();
+        $file->moveFile();
+
+        header('Location: '.$_SERVER['PHP_SELF']);
     }
 ?>

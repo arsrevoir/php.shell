@@ -47,7 +47,7 @@
         public function isUnique($value, $table, $column) {
             $coincidence = $this->select('SELECT * FROM ' . $table . ' WHERE ' . $column . '=:value', [':value' => $value]);
 
-            (empty($coincidence)) ? return true : return false;  
+            return empty($coincidence); 
         }
 
         //connection closure
