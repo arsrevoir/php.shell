@@ -1,5 +1,5 @@
 <?php 
-    require '../main/classes/connection.php';
+    require '../main/general.php';
 
     $conn = new Connection('localhost', null, 'root', '');
 ?>
@@ -14,10 +14,23 @@
 <body>
     <div class="page">
         <main role="main">
-            <?php 
-                
-            ?>
+            <form method='post' enctype="multipart/form-data">
+                <input type="file" name='file[]' multiple>
+                <input type="submit" name='submit'>
+            </form>
         </main>
     </div>
 </body>
 </html>
+
+<?php 
+    if(isset($_POST['submit'])) {
+        $ext = array(
+            'png' => 'image/png'            
+        );
+
+        $file = new File($_FILES['file'], 'images/', $ext);
+
+        echo var_dump($file->files_arr);
+    }
+?>

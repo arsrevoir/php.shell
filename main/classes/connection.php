@@ -18,7 +18,7 @@
                 $this->dbh = new PDO($server . $db, $user, $pass);
                 $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                (isset($_SESSION)) : session_start();
+                (isset($_SESSION)) ? : session_start();
 
             } catch(PDOException $e) {
                 die();
