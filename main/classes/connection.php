@@ -43,6 +43,12 @@
             $sth->execute($values);
         }
 
+            //uniqueness check
+        public function isUnique($value, $table, $column) {
+            $coincidence = $this->select('SELECT * FROM ' . $table . ' WHERE ' . $column . '=:value', [':value' => $value]);
+
+            (empty($coincidence)) ? return true : return false;  
+        }
 
         //connection closure
         public function __destruct() {
