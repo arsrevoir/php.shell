@@ -15,7 +15,8 @@
     <div class="page">
         <main role="main">
             <form method='post' enctype="multipart/form-data">
-                <input type="file" name='file[]' multiple>
+                <label for="file">Upload one or several files</label>
+                <input type="file" name='file[]' id='file' multiple>
                 <input type="submit" name='submit'>
             </form>
         </main>
@@ -26,11 +27,14 @@
 <?php 
     if(isset($_POST['submit'])) {
         $ext = array(
-            'png' => 'image/png'            
+            'png'  => 'image/png',
+            'jpeg' => 'image/jpeg',
+            'svg'  => 'image/svg',
+            'pdf'  => 'application/pdf'     
         );
 
-        $file = new File($_FILES['file'], 'images/', $ext);
+        $file = new FileHandler($_FILES['file'], 'images/', $ext);
 
-        echo var_dump($file->files_arr);
+       $file->moveFile();
     }
 ?>

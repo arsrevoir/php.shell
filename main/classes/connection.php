@@ -1,6 +1,6 @@
 <?php 
 
-    // connection related classes
+    // connection related
     class Connection {
 
         public object $dbh;
