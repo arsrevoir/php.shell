@@ -1,3 +1,5 @@
 inprocess.php
+# config ignoring
 /config/
+# auxaliary developing files
 /core/test/
